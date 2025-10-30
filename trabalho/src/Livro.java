@@ -9,4 +9,28 @@ public class Livro {
         this.anoPublicacao = anoPublicacao;
         this.numeroDePagina = numeroDePagina;
     }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public Date getAnoPublicacao() {
+        return anoPublicacao;
+    }
+
+    public void setAnoPublicacao(Date anoPublicacao) {
+        this.anoPublicacao = anoPublicacao;
+    }
+
+    public int getNumeroDePagina() {
+        return numeroDePagina;
+    }
+
+    public void setNumeroDePagina(int numeroDePagina) {
+        this.numeroDePagina = numeroDePagina;
+    }
 }
