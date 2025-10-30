@@ -7,6 +7,6 @@ public class Livro {
     public Livro(String titulo,Date anoPublicacao,int numeroDePagina){
         this.titulo=titulo;
         this.anoPublicacao = anoPublicacao;
-        this.numeroDePagina = numeroDePagina
+        this.numeroDePagina = numeroDePagina;
     }
 }
