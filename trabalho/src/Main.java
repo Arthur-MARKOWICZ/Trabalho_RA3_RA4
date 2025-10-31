@@ -7,14 +7,18 @@ public class Main {
         TabelaHash hash = new TabelaHash();
         int opcao = 0;
         while (opcao != -1){
-            System.out.println("Digite 1: para criar e adicionar livro ");
-            System.out.println("Digite 2: para remover livro pelo titulo");
-            System.out.println("Digite 3: para fazer o bubble sort");
-            System.out.println("Digite 4: para fazer o insertion sort");
-            System.out.println("Digite 5: para fazer o quick sort");
-            System.out.println("Digite -1 para sair");
-            opcao = scanner.nextInt();
             switch (opcao){
+                case 0:
+                    System.out.println("Digite 1: para criar e adicionar livro ");
+                    System.out.println("Digite 2: para remover livro pelo titulo");
+                    System.out.println("Digite 3: para fazer o bubble sort");
+                    System.out.println("Digite 4: para fazer o insertion sort");
+                    System.out.println("Digite 5: para fazer o quick sort");
+                    System.out.println("Digite 6: para buscar libro por titulo");
+                    System.out.println("Digite 7: exibir tabela hash ");
+                    System.out.println("Digite -1 para sair");
+                    opcao = scanner.nextInt();
+                    break;
                 case 1 :
                     System.out.println("digite o titulo do livro ");
                     String titulo =scanner.next();
@@ -24,8 +28,18 @@ public class Main {
                     int paginaNumero =  scanner.nextInt();
                     Livro livro = new Livro(titulo,ano,paginaNumero);
                     hash.inserir(livro);
+                    opcao = 0;
+                    break;
 
 
+                case 6:
+                    System.out.println("digite 0 titulo do livro para buscar");
+                    String tituloBusca =scanner.next();
+                    Livro livroBuscado = hash.buscar(tituloBusca);
+                    System.out.println(livroBuscado.getTitulo());
+                    System.out.println(livroBuscado.getAnoPublicacao());
+                    System.out.println(livroBuscado.getNumeroDePagina());
+                    break;
             }
         }
     }
