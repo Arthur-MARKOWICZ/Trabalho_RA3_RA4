@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
+        TabelaHash hash = new TabelaHash();
         int opcao = 0;
         while (opcao != -1){
             System.out.println("Digite 1: para criar e adicionar livro ");
@@ -22,7 +23,7 @@ public class Main {
                     System.out.println("digite o numero de pagina");
                     int paginaNumero =  scanner.nextInt();
                     Livro livro = new Livro(titulo,ano,paginaNumero);
-
+                    hash.inserir(livro);
 
 
             }
