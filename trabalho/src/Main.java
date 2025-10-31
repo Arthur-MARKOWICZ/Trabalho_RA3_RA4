@@ -1,3 +1,4 @@
+import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
@@ -11,6 +12,20 @@ public class Main {
             System.out.println("Digite 4: para fazer o insertion sort");
             System.out.println("Digite 5: para fazer o quick sort");
             System.out.println("Digite -1 para sair");
+            opcao = scanner.nextInt();
+            switch (opcao){
+                case 1 :
+                    System.out.println("digite o titulo do livro ");
+                    String titulo =scanner.next();
+                    System.out.println("digite o ano do livro");
+                    int ano = scanner.nextInt();
+                    System.out.println("digite o numero de pagina");
+                    int paginaNumero =  scanner.nextInt();
+                    Livro livro = new Livro(titulo,ano,paginaNumero);
+
+
+
+            }
         }
     }
 }

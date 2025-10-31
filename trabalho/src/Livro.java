@@ -2,9 +2,9 @@ import java.util.Date;
 
 public class Livro {
     private String titulo;
-    private Date anoPublicacao;
+    private int anoPublicacao;
     private int numeroDePagina;
-    public Livro(String titulo,Date anoPublicacao,int numeroDePagina){
+    public Livro(String titulo,int anoPublicacao,int numeroDePagina){
         this.titulo=titulo;
         this.anoPublicacao = anoPublicacao;
         this.numeroDePagina = numeroDePagina;
@@ -18,11 +18,11 @@ public class Livro {
         this.titulo = titulo;
     }
 
-    public Date getAnoPublicacao() {
+    public int getAnoPublicacao() {
         return anoPublicacao;
     }
 
-    public void setAnoPublicacao(Date anoPublicacao) {
+    public void setAnoPublicacao(int anoPublicacao) {
         this.anoPublicacao = anoPublicacao;
     }
 
