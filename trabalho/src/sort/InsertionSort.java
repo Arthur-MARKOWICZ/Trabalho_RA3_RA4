@@ -1,5 +1,6 @@
 package sort;
 
+import estrutura.*;
 import java.util.Scanner;
 
 public class InsertionSort {
