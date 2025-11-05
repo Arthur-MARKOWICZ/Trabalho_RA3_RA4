@@ -1,5 +1,7 @@
 import estrutura.*;
 import sort.BubbleSort;
+import sort.QuickSort;
+
 import java.util.Scanner;
 
 public class Main {
@@ -94,6 +96,44 @@ public class Main {
                     break;
 
                 case 5:
+                    System.out.println("\n=====================");
+                    System.out.println("1 - Ordenar por Título");
+                    System.out.println("2 - Ordenar por Ano");
+                    System.out.println("3 - Ordenar por Número de Páginas");
+                    System.out.print("Escolha: ");
+                    int escolhaQuick = scanner.nextInt();
+
+                    Livro[] vetorOrdenadoQuick = hash.exportarParaVetor();
+
+                    if (vetorOrdenadoQuick.length == 0) {
+                        System.out.println("Não há livros cadastrados para ordenar.");
+                    } else {
+                        boolean opcaoValida = true;
+
+                        switch (escolhaQuick) {
+                            case 1:
+                                System.out.println("\nOrdenando por título:");
+                                QuickSort.quickSortPorTitulo(vetorOrdenadoQuick);
+                                break;
+                            case 2:
+                                System.out.println("\nOrdenando por ano:");
+                                QuickSort.quickSortPorAno(vetorOrdenadoQuick);
+                                break;
+                            case 3:
+                                System.out.println("\nOrdenando por páginas:");
+                                QuickSort.quickSortPorPaginas(vetorOrdenadoQuick);
+                                break;
+                            default:
+                                System.out.println("Opção inválida.");
+                                opcaoValida = false;
+                                break;
+                        }
+
+                        if (opcaoValida) {
+                            hash.exibirVetor(vetorOrdenadoQuick);
+                        }
+                    }
+
                     opcao = 0;
                     break;
 

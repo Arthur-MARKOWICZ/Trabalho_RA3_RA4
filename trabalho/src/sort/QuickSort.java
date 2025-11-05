@@ -1,57 +1,134 @@
 package sort;
 
-import estrutura.*;
-import java.util.Scanner;
+import estrutura.Livro;
 
 public class QuickSort {
 
-    public static void quickSort(int[] vetor, int inicio, int fim) {
+
+    public static void quickSortPorTitulo(Livro[] vetor) {
+
+        if (vetor == null || vetor.length <= 1) {
+            System.out.println("Não há livros suficientes para ordenar.");
+            return;
+        }
+
+
+        for (int i = 0; i < vetor.length; i++) {
+            for (int j = i + 1; j < vetor.length; j++) {
+                if (vetor[i].getTitulo().equalsIgnoreCase(vetor[j].getTitulo())) {
+                    System.out.println("Título duplicado encontrado: \"" + vetor[i].getTitulo() + "\"");
+                    System.out.println("Ordenação cancelada!");
+                    return;
+                }
+            }
+        }
+
+        quickSortTitulo(vetor, 0, vetor.length - 1);
+        System.out.println("Livros ordenados por título com sucesso!");
+    }
+
+    private static void quickSortTitulo(Livro[] vetor, int inicio, int fim) {
         if (inicio < fim) {
-            int indicePivo = particionar(vetor, inicio, fim);
-            quickSort(vetor, inicio, indicePivo - 1);
-            quickSort(vetor, indicePivo + 1, fim);
+            int pivo = particionarTitulo(vetor, inicio, fim);
+            quickSortTitulo(vetor, inicio, pivo - 1);
+            quickSortTitulo(vetor, pivo + 1, fim);
         }
     }
 
-    public static int particionar(int[] vetor, int inicio, int fim) {
-        int pivo = vetor[fim];
+    private static int particionarTitulo(Livro[] vetor, int inicio, int fim) {
+        String pivo = vetor[fim].getTitulo();
         int i = inicio - 1;
+
         for (int j = inicio; j < fim; j++) {
-            if (vetor[j] <= pivo) {
+            if (vetor[j].getTitulo().compareToIgnoreCase(pivo) <= 0) {
                 i++;
-                int temp = vetor[i];
-                vetor[i] = vetor[j];
-                vetor[j] = temp;
+                trocar(vetor, i, j);
             }
         }
-        int temp = vetor[i + 1];
-        vetor[i + 1] = vetor[fim];
-        vetor[fim] = temp;
+
+        trocar(vetor, i + 1, fim);
         return i + 1;
     }
 
-    public static void exibirVetor(int[] vetor) {
-        for (int i = 0; i < vetor.length; i++) {
-            System.out.print(vetor[i] + " ");
+
+
+    public static void quickSortPorAno(Livro[] vetor) {
+
+        if (vetor == null || vetor.length <= 1) {
+            System.out.println("Não há livros suficientes para ordenar.");
+            return;
         }
-        System.out.println();
+
+        quickSortAno(vetor, 0, vetor.length - 1);
+        System.out.println("Livros ordenados por ano com sucesso!");
     }
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Digite o tamanho do vetor: ");
-        int n = scanner.nextInt();
-        int[] vetor = new int[n];
-        System.out.println("Digite os elementos do vetor:");
-        for (int i = 0; i < n; i++) {
-            vetor[i] = scanner.nextInt();
+    private static void quickSortAno(Livro[] vetor, int inicio, int fim) {
+        if (inicio < fim) {
+            int pivo = particionarAno(vetor, inicio, fim);
+            quickSortAno(vetor, inicio, pivo - 1);
+            quickSortAno(vetor, pivo + 1, fim);
         }
-        System.out.println("\nVetor antes da ordenação:");
-        exibirVetor(vetor);
-        quickSort(vetor, 0, vetor.length - 1);
-        System.out.println("\nVetor após a ordenação (Quick Sort):");
-        exibirVetor(vetor);
-        scanner.close();
+    }
+
+    private static int particionarAno(Livro[] vetor, int inicio, int fim) {
+        int pivo = vetor[fim].getAnoPublicacao();
+        int i = inicio - 1;
+
+        for (int j = inicio; j < fim; j++) {
+            if (vetor[j].getAnoPublicacao() <= pivo) {
+                i++;
+                trocar(vetor, i, j);
+            }
+        }
+
+        trocar(vetor, i + 1, fim);
+        return i + 1;
+    }
+
+
+
+
+    public static void quickSortPorPaginas(Livro[] vetor) {
+
+        if (vetor == null || vetor.length <= 1) {
+            System.out.println("Não há livros suficientes para ordenar.");
+            return;
+        }
+
+        quickSortPaginas(vetor, 0, vetor.length - 1);
+        System.out.println("Livros ordenados por número de páginas com sucesso!");
+    }
+
+    private static void quickSortPaginas(Livro[] vetor, int inicio, int fim) {
+        if (inicio < fim) {
+            int pivo = particionarPaginas(vetor, inicio, fim);
+            quickSortPaginas(vetor, inicio, pivo - 1);
+            quickSortPaginas(vetor, pivo + 1, fim);
+        }
+    }
+
+    private static int particionarPaginas(Livro[] vetor, int inicio, int fim) {
+        int pivo = vetor[fim].getNumeroDePagina();
+        int i = inicio - 1;
+
+        for (int j = inicio; j < fim; j++) {
+            if (vetor[j].getNumeroDePagina() <= pivo) {
+                i++;
+                trocar(vetor, i, j);
+            }
+        }
+
+        trocar(vetor, i + 1, fim);
+        return i + 1;
+    }
+
+
+
+
+    private static void trocar(Livro[] vetor, int i, int j) {
+        Livro temp = vetor[i];
+        vetor[i] = vetor[j];
+        vetor[j] = temp;
     }
 }
-
