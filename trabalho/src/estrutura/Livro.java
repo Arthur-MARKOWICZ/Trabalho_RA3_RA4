@@ -1,4 +1,4 @@
-import java.util.Date;
+package estrutura;
 
 public class Livro {
     private String titulo;
@@ -32,5 +32,12 @@ public class Livro {
 
     public void setNumeroDePagina(int numeroDePagina) {
         this.numeroDePagina = numeroDePagina;
+    }
+
+    @Override
+    public String toString() {
+        return "Título: " + titulo +
+                ", Ano: " + anoPublicacao +
+                ", Páginas: " + numeroDePagina;
     }
 }
