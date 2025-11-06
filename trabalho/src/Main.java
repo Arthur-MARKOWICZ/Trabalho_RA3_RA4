@@ -14,7 +14,7 @@ public class Main {
                     System.out.println("Digite 3: para fazer o bubble sort");
                     System.out.println("Digite 4: para fazer o insertion sort");
                     System.out.println("Digite 5: para fazer o quick sort");
-                    System.out.println("Digite 6: para buscar libro por titulo");
+                    System.out.println("Digite 6: para buscar livro por titulo");
                     System.out.println("Digite 7: exibir tabela hash ");
                     System.out.println("Digite -1 para sair");
                     opcao = scanner.nextInt();
