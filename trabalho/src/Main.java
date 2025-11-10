@@ -9,9 +9,10 @@ public class Main {
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         TabelaHash hash = new TabelaHash();
+
         int opcao = 0;
 
-        while (opcao != 10){
+        while (opcao != 11){
             switch (opcao){
                 case 0:
                     System.out.println("\n=====================");
@@ -24,7 +25,8 @@ public class Main {
                     System.out.println("7 - Buscar livro por ano");
                     System.out.println("8 - Buscar livro por número de páginas");
                     System.out.println("9 - Exibir Tabela Hash");
-                    System.out.println("10 - Sair");
+                    System.out.println("10 - adicionar 10 livro padroes");
+                    System.out.println("11 - Sair");
                     System.out.print("Escolha: ");
                     opcao = scanner.nextInt();
                     break;
@@ -185,6 +187,33 @@ public class Main {
                     hash.exibirTabela();
                     opcao = 0;
                     break;
+                case 10:
+                    Livro livro1 = new Livro("test 1",1,1);
+                    Livro livro2 = new Livro("test 2",2,2);
+                    Livro livro3 = new Livro("test 3",3,3);
+                    Livro livro4 = new Livro("test 4",4,4);
+                    Livro livro5 = new Livro("test 5",5,5);
+                    Livro livro6 = new Livro("test 6",6,6);
+                    Livro livro7 = new Livro("test 7",7,7);
+                    Livro livro8 = new Livro("test 8",8,8);
+                    Livro livro9 = new Livro("test 9",9,9);
+                    Livro livro10 = new Livro("test 10",10,10);
+                    hash.inserir(livro1);
+                    hash.inserir(livro2);
+                    hash.inserir(livro3);
+                    hash.inserir(livro4);
+                    hash.inserir(livro5);
+                    hash.inserir(livro6);
+                    hash.inserir(livro7);
+                    hash.inserir(livro8);
+                    hash.inserir(livro9);
+                    hash.inserir(livro10);
+                    opcao = 0;
+                    break;
+
+
+
+
             }
         }
         System.out.println("\nPrograma encerrado.");
