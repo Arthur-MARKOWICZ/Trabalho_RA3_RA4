@@ -1,6 +1,7 @@
 import estrutura.*;
 import sort.BubbleSort;
 import sort.QuickSort;
+import sort.InsertionSort;
 
 import java.util.Scanner;
 
@@ -94,8 +95,48 @@ public class Main {
                     break;
 
                 case 4:
+                    System.out.println("\n=====================");
+                    System.out.println("1 - Ordenar por Título");
+                    System.out.println("2 - Ordenar por Ano");
+                    System.out.println("3 - Ordenar por Número de Páginas");
+                    System.out.print("Escolha: ");
+                    int escolhaInsertion = scanner.nextInt();
+
+                    Livro[] vetorOrdenadoInsertion = hash.exportarParaVetor();
+
+                    if (vetorOrdenadoInsertion.length == 0) {
+                        System.out.println("Não há livros cadastrados para ordenar.");
+                    } else {
+                        boolean opcaoValida = true;
+
+                        switch (escolhaInsertion) {
+                            case 1:
+                                System.out.println("\nOrdenando por título:");
+                                InsertionSort.insertionSortPorTitulo(vetorOrdenadoInsertion);
+                                break;
+                            case 2:
+                                System.out.println("\nOrdenando por ano:");
+                                InsertionSort.insertionSortPorAno(vetorOrdenadoInsertion);
+                                break;
+                            case 3:
+                                System.out.println("\nOrdenando por páginas:");
+                                InsertionSort.insertionSortPorPaginas(vetorOrdenadoInsertion);
+                                break;
+                            default:
+                                System.out.println("Opção inválida.");
+                                opcaoValida = false;
+                                break;
+                        }
+
+                        if (opcaoValida) {
+                            hash.exibirVetor(vetorOrdenadoInsertion);
+                        }
+                    }
+
                     opcao = 0;
                     break;
+
+
 
                 case 5:
                     System.out.println("\n=====================");

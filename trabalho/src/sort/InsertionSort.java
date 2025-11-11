@@ -1,43 +1,76 @@
 package sort;
 
-import estrutura.*;
-import java.util.Scanner;
+import estrutura.Livro;
 
 public class InsertionSort {
 
-    public static void insertionSort(int[] vetor) {
+    public static void insertionSortPorTitulo(Livro[] vetor) {
+        if (vetor.length <= 1) {
+            System.out.println("Não há livros suficientes para ordenar.");
+            return;
+        }
+
+        for (int i = 0; i < vetor.length; i++) {
+            for (int j = i + 1; j < vetor.length; j++) {
+                if (vetor[i].getTitulo().equalsIgnoreCase(vetor[j].getTitulo())) {
+                    System.out.println("Título duplicado encontrado: \"" + vetor[i].getTitulo() + "\"");
+                    System.out.println("Ordenação cancelada!");
+                    return;
+                }
+            }
+        }
+
         for (int i = 1; i < vetor.length; i++) {
-            int chave = vetor[i];
+            Livro chave = vetor[i];
             int j = i - 1;
-            while (j >= 0 && vetor[j] > chave) {
+
+            while (j >= 0 && vetor[j].getTitulo().compareToIgnoreCase(chave.getTitulo()) > 0) {
                 vetor[j + 1] = vetor[j];
                 j--;
             }
             vetor[j + 1] = chave;
         }
+
+        System.out.println("Livros ordenados por título com sucesso!");
     }
 
-    public static void exibirVetor(int[] vetor) {
-        for (int i = 0; i < vetor.length; i++) {
-            System.out.print(vetor[i] + " ");
+    public static void insertionSortPorAno(Livro[] vetor) {
+        if (vetor.length <= 1) {
+            System.out.println("Não há livros suficientes para ordenar.");
+            return;
         }
-        System.out.println();
+
+        for (int i = 1; i < vetor.length; i++) {
+            Livro chave = vetor[i];
+            int j = i - 1;
+
+            while (j >= 0 && vetor[j].getAnoPublicacao() > chave.getAnoPublicacao()) {
+                vetor[j + 1] = vetor[j];
+                j--;
+            }
+            vetor[j + 1] = chave;
+        }
+
+        System.out.println("Livros ordenados por ano com sucesso!");
     }
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Digite o tamanho do vetor: ");
-        int n = scanner.nextInt();
-        int[] vetor = new int[n];
-        System.out.println("Digite os elementos do vetor:");
-        for (int i = 0; i < n; i++) {
-            vetor[i] = scanner.nextInt();
+    public static void insertionSortPorPaginas(Livro[] vetor) {
+        if (vetor.length <= 1) {
+            System.out.println("Não há livros suficientes para ordenar.");
+            return;
         }
-        System.out.println("\nVetor antes da ordenação:");
-        exibirVetor(vetor);
-        insertionSort(vetor);
-        System.out.println("\nVetor após a ordenação (Insertion Sort):");
-        exibirVetor(vetor);
-        scanner.close();
+
+        for (int i = 1; i < vetor.length; i++) {
+            Livro chave = vetor[i];
+            int j = i - 1;
+
+            while (j >= 0 && vetor[j].getNumeroDePagina() > chave.getNumeroDePagina()) {
+                vetor[j + 1] = vetor[j];
+                j--;
+            }
+            vetor[j + 1] = chave;
+        }
+
+        System.out.println("Livros ordenados por número de páginas com sucesso!");
     }
 }
