@@ -11,6 +11,7 @@ public class InsertionSort {
         }
 
         for (int i = 0; i < vetor.length; i++) {
+            //adicionar contadot para o numero de comparacao
             for (int j = i + 1; j < vetor.length; j++) {
                 if (vetor[i].getTitulo().equalsIgnoreCase(vetor[j].getTitulo())) {
                     System.out.println("Título duplicado encontrado: \"" + vetor[i].getTitulo() + "\"");

@@ -40,6 +40,7 @@ public class QuickSort {
         int i = inicio - 1;
 
         for (int j = inicio; j < fim; j++) {
+            //adicionar contadot para o numero de comparacao
             if (vetor[j].getTitulo().compareToIgnoreCase(pivo) <= 0) {
                 i++;
                 trocar(vetor, i, j);
