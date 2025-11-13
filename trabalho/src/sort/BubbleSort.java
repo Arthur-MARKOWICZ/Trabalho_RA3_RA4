@@ -9,6 +9,7 @@ public class BubbleSort {
             return;
         }
         for (int i = 0; i < vetor.length; i++) {
+            //adicionar o contar para o numero de comparacao
             for (int j = i + 1; j < vetor.length; j++) {
                 if (vetor[i].getTitulo().equalsIgnoreCase(vetor[j].getTitulo())) {
                     System.out.println("Título duplicado encontrado: \"" + vetor[i].getTitulo() + "\"");

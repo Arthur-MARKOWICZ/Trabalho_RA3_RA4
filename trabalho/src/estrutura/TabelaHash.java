@@ -13,7 +13,7 @@ public class TabelaHash {
             tabela[i] = new LinkedList<>();
         }
     }
-
+    //mudar o hash
     private int hash(String titulo) {
         return Math.abs(titulo.hashCode()) % TAMANHO;
     }
