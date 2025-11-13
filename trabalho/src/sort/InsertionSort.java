@@ -21,6 +21,8 @@ public class InsertionSort {
             }
         }
 
+        //long inicio = System.nanoTime();
+
         for (int i = 1; i < vetor.length; i++) {
             Livro chave = vetor[i];
             int j = i - 1;
@@ -32,8 +34,16 @@ public class InsertionSort {
             vetor[j + 1] = chave;
         }
 
+        //long fim = System.nanoTime();
+
+        //long tempoMs = (fim - inicio) / 2;
+        //System.out.println("Tempo de ordenação: " + tempoMs + " ms");
+
+
         System.out.println("Livros ordenados por título com sucesso!");
+
     }
+
 
     public static void insertionSortPorAno(Livro[] vetor) {
         if (vetor.length <= 1) {
