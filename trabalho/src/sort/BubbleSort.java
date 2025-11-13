@@ -8,8 +8,10 @@ public class BubbleSort {
             System.out.println("Não há livros suficientes para ordenar.");
             return;
         }
+        int colisões = 0;
         for (int i = 0; i < vetor.length; i++) {
             for (int j = i + 1; j < vetor.length; j++) {
+
                 if (vetor[i].getTitulo().equalsIgnoreCase(vetor[j].getTitulo())) {
                     System.out.println("Título duplicado encontrado: \"" + vetor[i].getTitulo() + "\"");
                     System.out.println("Ordenação cancelada!");
@@ -17,17 +19,31 @@ public class BubbleSort {
                 }
             }
         }
+        long inicioTempo = System.nanoTime();
+        int comparacoes = 0;
+        int trocas = 0;
         int n = vetor.length;
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - 1 - i; j++) {
+                comparacoes++;
                 if (vetor[j].getTitulo().compareToIgnoreCase(vetor[j + 1].getTitulo()) > 0) {
                     Livro temp = vetor[j];
                     vetor[j] = vetor[j + 1];
                     vetor[j + 1] = temp;
+                    trocas++;
                 }
             }
         }
-        System.out.println("Livros ordenados por título com sucesso!");
+
+        long fimTempo = System.nanoTime();
+        long tempoTotal = fimTempo - inicioTempo;
+        System.out.println("=======================================");
+        System.out.println("======= RELATÓRIO DA ORDENAÇÃO =======");
+        System.out.println("Tempo total (ns): " + tempoTotal);
+        System.out.println("Comparações realizadas: " + comparacoes);
+        System.out.println("Trocas realizadas: " + trocas);
+        System.out.println("Colisões: " + colisões);
+        System.out.println("=======================================");
     }
     public static void bubbleSortPorAno(Livro[] vetor) {
         if (vetor.length <= 1) {
