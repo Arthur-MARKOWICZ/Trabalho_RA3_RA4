@@ -4,8 +4,8 @@ import java.util.LinkedList;
 
 public class TabelaHash {
 
-    private static final int TAMANHO = 10;
-    private int tamanho;           // tamanho atual da tabela
+    private  int TAMANHO = 10;
+
     private int quantidade;
     private static final double LIMITE_FATOR_CARGA = 0.75;
     private LinkedList<Livro>[] tabela;
@@ -42,12 +42,13 @@ public class TabelaHash {
         }
 
         lista.add(livro);
+        quantidade++;
         System.out.println("Livro inserido: " + livro.getTitulo());
         verificarFatorCarga();
     }
 
     private void verificarFatorCarga() {
-        double fatorCarga = (double) quantidade / tamanho;
+        double fatorCarga = (double) quantidade / TAMANHO;
 
         if (fatorCarga > LIMITE_FATOR_CARGA) {
             System.out.println("\n🚨 FATOR DE CARGA ACIMA DE 0.75 (" + fatorCarga + ")");
@@ -57,7 +58,7 @@ public class TabelaHash {
     }
 
     private void redimensionarTabela() {
-        int novoTamanho = tamanho * 2;
+        int novoTamanho = TAMANHO * 2;
         LinkedList<Livro>[] novaTabela = new LinkedList[novoTamanho];
 
         for (int i = 0; i < novoTamanho; i++) {
@@ -71,6 +72,8 @@ public class TabelaHash {
                 novaTabela[novoIndice].add(l);
             }
         }
+        this.tabela = novaTabela;
+        this.TAMANHO = novoTamanho;
     }
 
         public Livro buscarTitulo (String titulo){
