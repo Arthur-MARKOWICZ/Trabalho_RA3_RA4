@@ -41,6 +41,7 @@ public class Main {
                     int paginaNumero = scanner.nextInt();
                     Livro livro = new Livro(titulo, ano, paginaNumero);
                     hash.inserir(livro);
+                    System.out.println("total de colisoes" + hash.getColisoes());
                     System.out.println("Livro inserido com sucesso!");
                     opcao = 0;
                     break;
